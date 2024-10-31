@@ -59,6 +59,9 @@ public class BusDatabase {
      * foreign keys, if they do not exist already. If they already exist, this method does nothing.
      * As a hint, you'll need to create Routes last, and Routes must include Foreign Keys to Stops and
      * BusLines.
+     *
+     * MAKE ABSOLUTELY SURE YOUR TABLE AND COLUMN NAMES MATCH THE INSTRUCTIONS EXACTLY!!!!
+     *
      * @throws SQLException
      */
     public void createTables() throws SQLException {
@@ -112,7 +115,7 @@ public class BusDatabase {
     /**
      * Return a list of all BusLines
      */
-    public List<BusLine> getBusLines() {
+    public List<BusLine> getBusLines() throws SQLException {
         //TODO: implement
         return null;
     }

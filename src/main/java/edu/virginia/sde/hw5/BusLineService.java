@@ -12,59 +12,6 @@ public class BusLineService {
         this.busDatabase = busDatabase;
     }
 
-    public void addStops(List<Stop> stops) {
-        try {
-            busDatabase.connect();
-            busDatabase.addStops(stops);
-            busDatabase.disconnect();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void addBusLines(List<BusLine> busLines) {
-        try {
-            busDatabase.connect();
-            busDatabase.addBusLines(busLines);
-            busDatabase.disconnect();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public List<BusLine> getBusLines() {
-        try {
-            busDatabase.connect();
-            var busLines = busDatabase.getBusLines();
-            busDatabase.disconnect();
-            return busLines;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public List<Stop> getStops() {
-        try {
-            busDatabase.connect();
-            var stops = busDatabase.getStops();
-            busDatabase.disconnect();
-            return stops;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public Route getRoute(BusLine busLine) {
-        try {
-            busDatabase.connect();
-            var stops = busDatabase.getRouteForBusLine(busLine);
-            busDatabase.disconnect();
-            return stops;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     /**
      * Return the closest stop to a given coordinate (using Euclidean distance, not great circle distance)
      * @param latitude - North/South coordinate (positive is North, Negative is South) in degrees
@@ -84,7 +31,7 @@ public class BusLineService {
      * @throws NoSuchElementException if the BusLine doesn't exist **or** has no stops.
      * @return the closest Stop
      */
-    public Stop getClosestByBusline(double latitude, double longitude, String buslineName) {
+    public Stop getClosestStopByBusline(double latitude, double longitude, String busLongName) {
         //TODO: implement
         return null;
     }
@@ -95,7 +42,7 @@ public class BusLineService {
      * @return Optional.empty() if no bus route visits both points
      * @throws IllegalArgumentException if either or both stops don't exist in the database
      */
-    public Optional<BusLine> getRecommendedBusLine(Stop source, Stop destination) {
+    public Optional<BusLine> getRecommendedBusLine(String sourceStopName, String destinationStopName) {
         //TODO: implement
         return Optional.empty();
     }
